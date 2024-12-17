@@ -45,8 +45,12 @@ On iOS:
 Open the iOS project in Xcode (located in iosApp directory).
 Select a target device or simulator and run the project.
 
-![Alt text](/screenshots/Screen_01.png?raw=true "Screen 1")
-![Alt text](/screenshots/Screen_02.png?raw=true "Screen 2")
-![Alt text](/screenshots/Screen_03.png?raw=true "Screen 3")
-![Alt text](/screenshots/Screen_04.png?raw=true "Screen 4")
-![Alt text](/screenshots/Screen_05.png?raw=true "Screen 5")
+
+<div>
+   <img src="/screenshots/Screen_01.png" width="150px"</img>
+   <img src="/screenshots/Screen_02.png" width="150px"</img>
+   <img src="/screenshots/Screen_03.png" width="150px"</img>
+   <img src="/screenshots/Screen_04.png" width="150px"</img>
+   <img src="/screenshots/Screen_05.png" width="150px"</img>
+</div>
+
