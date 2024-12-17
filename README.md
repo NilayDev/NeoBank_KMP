@@ -3,13 +3,24 @@
 
 This is a Kotlin Multiplatform Mobile (KMM) project that allows you to write code that runs on both Android and iOS platforms. The project is built using Kotlin's shared codebase, enabling code reuse across different platforms while still providing the ability to implement platform-specific functionality when needed.
 
-## Features
+## Integrated
+- Login Screen with API
+  - Authorize 
+  - Login Username / Password 
+  - After OTP validate - Resume for token 
+  - Obtain Token 6
+- Get user profile with API
+- Fetch Wallets API 
+- Update User Profile 
+ 
+
+## Features 
 - Shared code for both Android and iOS using Kotlin.
 - Supports common functionality across platforms such as data models, business logic, and more.
 - Platform-specific implementations for Android and iOS using `expect`/`actual` mechanism.
 - Easy integration with existing Android and iOS applications.
 
-## Requirements
+## Requirements to run this project
  Make sure you have the following tools installed:
 
 - **Android Studio** (latest stable version) with the Kotlin plugin.
