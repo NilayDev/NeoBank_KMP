@@ -82,7 +82,7 @@ fun DefaultScreenUI(
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = MaterialTheme.colorScheme.background
                                 ),
-                                contentPadding = PaddingValues(),
+                                contentPadding = PaddingValues(start = 10.dp),
                                 onClick = onHamburgerClick,
                                 shape = RectangleShape,
                             ) {

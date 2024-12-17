@@ -19,6 +19,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,6 +33,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import org.digital101.simplewallet.domain.ToolBarButton
 import org.digital101.simplewallet.presentation.component.DefaultButton
 import org.digital101.simplewallet.presentation.component.DefaultScreenUI
@@ -325,8 +329,8 @@ fun ProfileScreen(
                     events(ProfileEvent.OnUpdateEmployAnnualIncome(inputText))
                 },
             )
-            Spacer(modifier = Modifier.padding(top = 36.dp))
 
+            Spacer(modifier = Modifier.padding(top = 36.dp))
 
             DefaultButton(
                 shape = RoundedCornerShape(8.dp),
@@ -345,6 +349,8 @@ fun ProfileScreen(
                 },
                 text = stringResource(Res.string.label_update),
             )
+
+            Spacer(modifier = Modifier.padding(top = 36.dp))
         }
     }
     if (state.isDialogVisible) {
@@ -360,51 +366,62 @@ fun ProfileScreen(
 fun ProfileUpdateSuccessDialog(
     onDoneClick: () -> Unit
 ) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .wrapContentSize().padding(16.dp)
-
+    Dialog(
+        onDismissRequest = onDoneClick,
+        properties = DialogProperties(
+            dismissOnBackPress = false,
+            dismissOnClickOutside = false,
+        )
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
+        Card(
             modifier = Modifier
-                .background(Color.LightGray, shape = RoundedCornerShape(12.dp))
-                .padding(24.dp)
+                .wrapContentSize()
+                .padding(4.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.background,
+                contentColor = MaterialTheme.colorScheme.onBackground,
+            ),
+            shape = RoundedCornerShape(8.dp),
+            elevation = CardDefaults.cardElevation(4.dp),
         ) {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .size(100.dp)
-                    .background(color = Color(0xFFFFD231), shape = CircleShape)
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(24.dp),
             ) {
-                Image(
-                    painter = painterResource(Res.drawable.doneimage),
-                    contentDescription = null,
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .size(100.dp)
+                        .background(color = Color(0xFFFFD231), shape = CircleShape)
+                ) {
+                    Image(
+                        painter = painterResource(Res.drawable.doneimage),
+                        contentDescription = null,
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = "Profile update successful",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                DefaultButton(
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+                        onDoneClick()
+                        /*if (emailErrorMessage.isEmpty() && passwordErrorMessage.isEmpty())
+                            events(LoginEvent.Authorize)*/
+                    },
+                    text = stringResource(Res.string.label_done),
                 )
             }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Text(
-                text = "Profile update successful",
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            DefaultButton(
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    onDoneClick()
-                    /*if (emailErrorMessage.isEmpty() && passwordErrorMessage.isEmpty())
-                        events(LoginEvent.Authorize)*/
-                },
-                text = stringResource(Res.string.label_done),
-            )
         }
     }
 }

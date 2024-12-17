@@ -32,9 +32,7 @@ import kotlinx.coroutines.launch
 import org.digital101.simplewallet.presentation.navigation.BottomNavItem
 import org.digital101.simplewallet.presentation.navigation.MainNavigation
 import org.digital101.simplewallet.presentation.ui.main.home.HomeScreen
-import org.digital101.simplewallet.presentation.ui.main.profile.viewModel.ProfileViewModel
 import org.digital101.simplewallet.presentation.ui.main.settings.AccountSettings
-import org.koin.compose.koinInject
 
 @Composable
 fun MainNav(
@@ -85,30 +83,32 @@ fun MainNav(
                     }
 
                     dialog<MainNavigation.Logout> {
-                        AlertDialog(title = {
-                            Text(
-                                text = "Alert",
-                                style = MaterialTheme.typography.titleLarge,
-                            )
-                        }, text = {
-                            Text(
-                                text = "Are you sure want to logout?",
-                                style = MaterialTheme.typography.titleLarge,
-                            )
-                        }, onDismissRequest = {
-                            navBottomBarController.navigateUp()
-                        }, confirmButton = {
-                            ElevatedButton(onClick = {
-                                navBottomBarController.navigateUp()
-                                logout()
-                            }) {
+                        AlertDialog(
+                            containerColor = MaterialTheme.colorScheme.background,
+                            title = {
                                 Text(
-                                    text = "Logout",
+                                    text = "Alert",
                                     style = MaterialTheme.typography.titleLarge,
-                                    color = MaterialTheme.colorScheme.onSurface,
                                 )
-                            }
-                        })
+                            }, text = {
+                                Text(
+                                    text = "Are you sure want to logout?",
+                                    style = MaterialTheme.typography.titleLarge,
+                                )
+                            }, onDismissRequest = {
+                                navBottomBarController.navigateUp()
+                            }, confirmButton = {
+                                ElevatedButton(onClick = {
+                                    navBottomBarController.navigateUp()
+                                    logout()
+                                }) {
+                                    Text(
+                                        text = "Logout",
+                                        style = MaterialTheme.typography.titleLarge,
+                                        color = MaterialTheme.colorScheme.onSurface,
+                                    )
+                                }
+                            })
                     }
                 }
             }
